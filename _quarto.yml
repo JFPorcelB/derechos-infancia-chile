@@ -1,0 +1,17 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Derechos de la infancia en Chile"
+  navbar:
+    left:
+      - href: index.qmd
+        text: "Panorama"
+      - href: metodologia.qmd
+        text: "Metodología"
+
+format:
+  html:
+    toc: false
+    smooth-scroll: true

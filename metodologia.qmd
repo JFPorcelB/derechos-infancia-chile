@@ -1,0 +1,9 @@
+---
+title: "Metodología"
+---
+
+Aquí vamos a explicar:
+
+-   Fuentes: CASEN 2024, EANNA 2023, Polivictimización 2023, ELPI\
+-   Universos y definiciones de indicadores\
+-   Notas de estimación (ponderadores y diseño muestral)
