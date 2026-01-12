@@ -40,7 +40,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-1d4f84655f446305ac42a8f1abcf7405.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-be81654f62d3fa423899e4ff0c890d9b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,6 +70,35 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -132,9 +161,58 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="derechos-de-la-infancia-en-chile" class="level1">
+<p>#| include: false knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)</p>
+<section id="derechos-de-la-infancia-en-chile" class="level1 hero">
 <h1>Derechos de la infancia en Chile</h1>
-<p>Sitio en construcción (ahora generado con <strong>Quarto</strong>).</p>
+<p><span class="chip">MVP</span> Indicadores seleccionados para <strong>0–17 años</strong>, con comparación <strong>Chile vs Coquimbo</strong>.<br>
+(En esta etapa usamos datos de prueba para validar diseño; luego conectamos CASEN 2024, EANNA, Polivictimización y ELPI).</p>
+</section>
+<p>library(tidyverse) library(glue) library(scales)</p>
+<p>fmt_pct &lt;- function(x) number(x, accuracy = 0.1, suffix = “%”)</p>
+<p>region &lt;- “Coquimbo”</p>
+<section id="datos-mock-de-prueba-para-validar-estética-y-layout" class="level1">
+<h1>Datos MOCK (de prueba) para validar estética y layout</h1>
+<p>kpis &lt;- tibble::tribble( ~indicator_id, ~indicator_label, ~source, ~universe, ~higher_is_worse, ~chile, ~coquimbo, “casen_pov_inc”, “Pobreza por ingresos (0–17)”, “CASEN 2024”, “0–17”, TRUE, 12.4, 14.1, “casen_pov_mdim”,“Pobreza multidimensional (0–17)”, “CASEN 2024”, “0–17”, TRUE, 18.7, 20.0, “casen_attend”, “Asistencia escolar (6–17)”, “CASEN 2024”, “6–17”, FALSE, 95.2, 94.1, “casen_noatt”, “Inasistencia escolar (6–17)”, “CASEN 2024”, “6–17”, TRUE, 4.8, 5.9, “poli_vict”, “Victimización (12 meses)”, “Polivictimización 2023”,“según encuesta”, TRUE, 32.0, 34.6, “poli_poly”, “Polivictimización (12 meses)”, “Polivictimización 2023”,“según encuesta”, TRUE, 12.5, 13.8, “eanna_childlab”,“Trabajo infantil”, “EANNA 2023”, “según encuesta”, TRUE, 6.9, 7.4, “eanna_care”, “Cuidados intensivos / carga de cuidados”, “EANNA 2023”, “según encuesta”, TRUE, 21.5, 22.9 ) %&gt;% mutate(delta_pp = coquimbo - chile)</p>
+<div class="kpi-grid">
+<p>make_card &lt;- function(lbl, uni, src, chile, reg, delta){ arrow &lt;- ifelse(delta &gt;= 0, “↑”, “↓”) delta_txt &lt;- glue(“{arrow} {number(abs(delta), accuracy = 0.1)} pp vs Chile”)</p>
+<p>glue(’</p>
+<div class="kpi-card">
+<pre><code>&lt;div class="kpi-title"&gt;{lbl}&lt;/div&gt;
+&lt;div class="kpi-row"&gt;
+  &lt;div&gt;
+    &lt;div class="kpi-label"&gt;Chile&lt;/div&gt;
+    &lt;div class="kpi-value"&gt;{fmt_pct(chile)}&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div class="kpi-label"&gt;{region}&lt;/div&gt;
+    &lt;div class="kpi-value"&gt;{fmt_pct(reg)}&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="kpi-delta"&gt;Δ &lt;strong&gt;{delta_txt}&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="kpi-foot"&gt;
+  &lt;span class="chip"&gt;{src}&lt;/span&gt;
+  &lt;span class="chip"&gt;{uni}&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+</div>
+<p>’) }</p>
+<p>cards_df &lt;- kpis %&gt;% select(indicator_label, universe, source, chile, coquimbo, delta_pp)</p>
+<p>html_cards &lt;- pmap_chr( list(cards_df<span class="math inline">\(indicator_label, cards_df\)</span>universe, cards_df<span class="math inline">\(source,
+cards_df\)</span>chile, cards_df<span class="math inline">\(coquimbo, cards_df\)</span>delta_pp), make_card )</p>
+<p>cat(paste(html_cards, collapse = “”))</p>
+</div>
+<p>k2 &lt;- kpis %&gt;% mutate( worse_score = if_else(higher_is_worse, delta_pp, -delta_pp), abs_gap = abs(delta_pp) )</p>
+<p>worst &lt;- k2 %&gt;% arrange(desc(worse_score)) %&gt;% slice(1) closest &lt;- k2 %&gt;% arrange(abs_gap) %&gt;% slice(1)</p>
+<p>cat(glue(“- En <strong>{worst<span class="math inline">\(indicator_label}**, {region} está **{number(worst\)</span>delta_pp, accuracy = 0.1)} pp</strong> respecto de Chile.”)) cat(glue(“- La diferencia más baja aparece en <strong>{closest<span class="math inline">\(indicator_label}** (**{number(closest\)</span>delta_pp, accuracy = 0.1)} pp</strong>).”)) cat(“- <em>Nota:</em> los universos varían por encuesta. Revisa definiciones en <strong>Metodología</strong>.”)</p>
+Autora
+<div class="kpi-card">
+<div class="kpi-title">
+Javiera Porcel Bugueño
+</div>
+<div style="color:#6B6B78; margin-top:-6px;">
+Sociologa. Magister en Políticas Públicas. Diplomada en Derechos de la Infancia. Diplomada en Ciencia de Datos. Eterna aprendiz y entusiasta por la investigación.
+</div>
+</div>
+<p>```</p>
 
 
 </section>

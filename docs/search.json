@@ -1,16 +1,16 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Panorama",
-    "section": "",
-    "text": "Derechos de la infancia en Chile\nSitio en construcción (ahora generado con Quarto)."
-  },
-  {
     "objectID": "metodologia.html",
     "href": "metodologia.html",
     "title": "Metodología",
     "section": "",
     "text": "Aquí vamos a explicar:\n\nFuentes: CASEN 2024, EANNA 2023, Polivictimización 2023, ELPI\n\nUniversos y definiciones de indicadores\n\nNotas de estimación (ponderadores y diseño muestral)"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Panorama",
+    "section": "",
+    "text": "#| include: false knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)\n\nDerechos de la infancia en Chile\nMVP Indicadores seleccionados para 0–17 años, con comparación Chile vs Coquimbo.\n(En esta etapa usamos datos de prueba para validar diseño; luego conectamos CASEN 2024, EANNA, Polivictimización y ELPI).\n\nlibrary(tidyverse) library(glue) library(scales)\nfmt_pct &lt;- function(x) number(x, accuracy = 0.1, suffix = “%”)\nregion &lt;- “Coquimbo”\n\nDatos MOCK (de prueba) para validar estética y layout\nkpis &lt;- tibble::tribble( ~indicator_id, ~indicator_label, ~source, ~universe, ~higher_is_worse, ~chile, ~coquimbo, “casen_pov_inc”, “Pobreza por ingresos (0–17)”, “CASEN 2024”, “0–17”, TRUE, 12.4, 14.1, “casen_pov_mdim”,“Pobreza multidimensional (0–17)”, “CASEN 2024”, “0–17”, TRUE, 18.7, 20.0, “casen_attend”, “Asistencia escolar (6–17)”, “CASEN 2024”, “6–17”, FALSE, 95.2, 94.1, “casen_noatt”, “Inasistencia escolar (6–17)”, “CASEN 2024”, “6–17”, TRUE, 4.8, 5.9, “poli_vict”, “Victimización (12 meses)”, “Polivictimización 2023”,“según encuesta”, TRUE, 32.0, 34.6, “poli_poly”, “Polivictimización (12 meses)”, “Polivictimización 2023”,“según encuesta”, TRUE, 12.5, 13.8, “eanna_childlab”,“Trabajo infantil”, “EANNA 2023”, “según encuesta”, TRUE, 6.9, 7.4, “eanna_care”, “Cuidados intensivos / carga de cuidados”, “EANNA 2023”, “según encuesta”, TRUE, 21.5, 22.9 ) %&gt;% mutate(delta_pp = coquimbo - chile)\n\nmake_card &lt;- function(lbl, uni, src, chile, reg, delta){ arrow &lt;- ifelse(delta &gt;= 0, “↑”, “↓”) delta_txt &lt;- glue(“{arrow} {number(abs(delta), accuracy = 0.1)} pp vs Chile”)\nglue(’\n\n&lt;div class=\"kpi-title\"&gt;{lbl}&lt;/div&gt;\n&lt;div class=\"kpi-row\"&gt;\n  &lt;div&gt;\n    &lt;div class=\"kpi-label\"&gt;Chile&lt;/div&gt;\n    &lt;div class=\"kpi-value\"&gt;{fmt_pct(chile)}&lt;/div&gt;\n  &lt;/div&gt;\n  &lt;div&gt;\n    &lt;div class=\"kpi-label\"&gt;{region}&lt;/div&gt;\n    &lt;div class=\"kpi-value\"&gt;{fmt_pct(reg)}&lt;/div&gt;\n  &lt;/div&gt;\n&lt;/div&gt;\n&lt;div class=\"kpi-delta\"&gt;Δ &lt;strong&gt;{delta_txt}&lt;/strong&gt;&lt;/div&gt;\n&lt;div class=\"kpi-foot\"&gt;\n  &lt;span class=\"chip\"&gt;{src}&lt;/span&gt;\n  &lt;span class=\"chip\"&gt;{uni}&lt;/span&gt;\n&lt;/div&gt;\n\n’) }\ncards_df &lt;- kpis %&gt;% select(indicator_label, universe, source, chile, coquimbo, delta_pp)\nhtml_cards &lt;- pmap_chr( list(cards_df\\(indicator_label, cards_df\\)universe, cards_df\\(source,\ncards_df\\)chile, cards_df\\(coquimbo, cards_df\\)delta_pp), make_card )\ncat(paste(html_cards, collapse = “”))\n\nk2 &lt;- kpis %&gt;% mutate( worse_score = if_else(higher_is_worse, delta_pp, -delta_pp), abs_gap = abs(delta_pp) )\nworst &lt;- k2 %&gt;% arrange(desc(worse_score)) %&gt;% slice(1) closest &lt;- k2 %&gt;% arrange(abs_gap) %&gt;% slice(1)\ncat(glue(“- En {worst\\(indicator_label}**, {region} está **{number(worst\\)delta_pp, accuracy = 0.1)} pp respecto de Chile.”)) cat(glue(“- La diferencia más baja aparece en {closest\\(indicator_label}** (**{number(closest\\)delta_pp, accuracy = 0.1)} pp).”)) cat(“- Nota: los universos varían por encuesta. Revisa definiciones en Metodología.”)\nAutora\n\n\nJaviera Porcel Bugueño\n\n\nSociologa. Magister en Políticas Públicas. Diplomada en Derechos de la Infancia. Diplomada en Ciencia de Datos. Eterna aprendiz y entusiasta por la investigación.\n\n\n```"
   }
 ]

@@ -1,0 +1,109 @@
+/*-- scss:defaults --*/
+/* Paleta lilas pastel (suave) */
+$brand:  #B8A6FF;   /* acento pastel */
+$brand2: #6D5BD0;   /* títulos lila medio (no intenso) */
+$soft:   #F2EFFF;   /* fondo chips */
+$bg:     #FAFAFD;   /* fondo muy claro */
+$border: #E9E7F5;   /* borde suave */
+$text:   #2B2B33;
+$muted:  #6B6B78;
+
+$body-bg: $bg;
+$body-color: $text;
+
+/*-- scss:rules --*/
+h1, h2, h3 { color: $brand2; }
+
+.hero{
+  background: white;
+  border: 1px solid $border;
+  border-radius: 18px;
+  padding: 18px 18px 14px 18px;
+  box-shadow: 0 2px 12px rgba(30, 10, 80, 0.04);
+}
+
+.kpi-grid{
+  display: grid;
+  grid-template-columns: repeat(4, minmax(230px, 1fr));
+  gap: 14px;
+  margin-top: 10px;
+}
+@media (max-width: 1100px){ .kpi-grid{ grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 650px){ .kpi-grid{ grid-template-columns: 1fr; } }
+
+.kpi-card{
+  background: white;
+  border: 1px solid $border;
+  border-radius: 16px;
+  padding: 14px 14px 12px 14px;
+  box-shadow: 0 2px 10px rgba(30, 10, 80, 0.05);
+}
+
+.kpi-title{
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: $brand2;
+  margin-bottom: 10px;
+}
+
+.kpi-row{
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: baseline;
+}
+
+.kpi-label{ color: $muted; font-size: 0.82rem; }
+.kpi-value{ font-size: 1.45rem; font-weight: 800; letter-spacing: -0.01em; }
+
+.kpi-delta{
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: $muted;
+}
+/* Delta en lila suave (sin morado fuerte) */
+.kpi-delta strong{ color: $brand2; }
+
+.kpi-foot{
+  margin-top: 10px;
+  font-size: 0.78rem;
+  color: $muted;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.chip{
+  background: $soft;
+  color: $brand2;
+  border-radius: 999px;
+  padding: 2px 9px;
+  font-weight: 650;
+}
+
+/* --- Pulido visual --- */
+.kpi-value{
+  font-size: 1.55rem;          /* un poco más protagonista */
+  font-weight: 850;
+}
+
+.kpi-label{
+  letter-spacing: 0.01em;
+}
+
+.kpi-delta{
+  margin-top: 12px;
+}
+
+.kpi-foot{
+  margin-top: 12px;
+}
+
+.kpi-card{
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+.kpi-card:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(30, 10, 80, 0.08);
+}
+

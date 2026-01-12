@@ -2,6 +2,99 @@
 title: "Panorama"
 ---
 
+<div class="hero">
+
 # Derechos de la infancia en Chile
 
-Sitio en construcción (ahora generado con **Quarto**).
+```{r}
+#| include: false
+library(tidyverse)
+library(glue)
+library(scales)
+
+fmt_pct <- function(x) number(x, accuracy = 0.1, suffix = "%")
+region <- "Coquimbo"
+
+# Datos MOCK (de prueba) para validar estética y layout
+kpis <- tibble::tribble(
+  ~indicator_id, ~indicator_label,                                ~source,                 ~universe,        ~higher_is_worse, ~chile, ~coquimbo,
+  "casen_pov_inc", "Pobreza por ingresos (0–17)",                 "CASEN 2024",            "0–17",           TRUE,            12.4,   14.1,
+  "casen_pov_mdim","Pobreza multidimensional (0–17)",             "CASEN 2024",            "0–17",           TRUE,            18.7,   20.0,
+  "casen_attend",  "Asistencia escolar (6–17)",                   "CASEN 2024",            "6–17",           FALSE,           95.2,   94.1,
+  "casen_noatt",   "Inasistencia escolar (6–17)",                 "CASEN 2024",            "6–17",           TRUE,             4.8,    5.9,
+  "poli_vict",     "Victimización (12 meses)",                    "Polivictimización 2023","según encuesta", TRUE,            32.0,   34.6,
+  "poli_poly",     "Polivictimización (12 meses)",                "Polivictimización 2023","según encuesta", TRUE,            12.5,   13.8,
+  "eanna_childlab","Trabajo infantil",                            "EANNA 2023",            "según encuesta", TRUE,             6.9,    7.4,
+  "eanna_care",    "Cuidados intensivos / carga de cuidados",     "EANNA 2023",            "según encuesta", TRUE,            21.5,   22.9
+) %>%
+  mutate(delta_pp = coquimbo - chile)
+```
+<div class="kpi-grid">
+
+```{r}
+#| echo: false
+#| results: asis
+#| message: false
+#| warning: false
+
+make_card <- function(lbl, uni, src, chile, reg, delta){
+  arrow <- ifelse(delta >= 0, "↑", "↓")
+  delta_txt <- glue("{arrow} {number(abs(delta), accuracy = 0.1)} pp vs Chile")
+
+  glue(
+    '<div class="kpi-card"><div class="kpi-title">{lbl}</div><div class="kpi-row"><div><div class="kpi-label">Chile</div><div class="kpi-value">{fmt_pct(chile)}</div></div><div><div class="kpi-label">{region}</div><div class="kpi-value">{fmt_pct(reg)}</div></div></div><div class="kpi-delta">Δ <strong>{delta_txt}</strong></div><div class="kpi-foot"><span class="chip">{src}</span><span class="chip">{uni}</span></div></div>'
+  )
+}
+
+cards_df <- kpis %>%
+  select(indicator_label, universe, source, chile, coquimbo, delta_pp)
+
+html_cards <- pmap_chr(
+  list(
+    cards_df$indicator_label,
+    cards_df$universe,
+    cards_df$source,
+    cards_df$chile,
+    cards_df$coquimbo,
+    cards_df$delta_pp
+  ),
+  make_card
+)
+
+cat('<div class="kpi-grid">')
+cat(paste(html_cards, collapse = ""))
+cat('</div>')
+
+```
+</div>
+
+```{r}
+#| echo: false
+#| results: asis
+#| message: false
+#| warning: false
+
+k2 <- kpis %>%
+  mutate(
+    worse_score = if_else(higher_is_worse, delta_pp, -delta_pp),
+    abs_gap = abs(delta_pp)
+  )
+
+worst   <- k2 %>% arrange(desc(worse_score)) %>% slice(1)
+closest <- k2 %>% arrange(abs_gap) %>% slice(1)
+
+cat(glue("- En **{worst$indicator_label}**, {region} está **{number(worst$delta_pp, accuracy = 0.1)} pp** respecto de Chile.\n"))
+cat(glue("- La diferencia más baja aparece en **{closest$indicator_label}** (**{number(closest$delta_pp, accuracy = 0.1)} pp**).\n"))
+cat("- *Nota:* los universos varían por encuesta. Revisa definiciones en **Metodología**.\n")
+```
+</div>
+<div class="kpi-card">
+  <div class="kpi-title">Javiera Porcel Bugueño</div>
+  <div style="color:#6B6B78; margin-top:-6px;">
+    Sociologa. Magister en Políticas Públicas. Diplomada en Derechos de la Infancia. Diplomada en Ciencia de Datos.
+    Eterna aprendiz y entusiasta por la investigación.
+  </div>
+</div>
+
+
+
