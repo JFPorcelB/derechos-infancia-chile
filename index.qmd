@@ -17,18 +17,12 @@ fmt_pct <- function(x) number(x, accuracy = 0.1, suffix = "%")
 region <- "Coquimbo"
 
 # Datos MOCK (de prueba) para validar estética y layout
-kpis <- tibble::tribble(
-  ~indicator_id, ~indicator_label,                                ~source,                 ~universe,        ~higher_is_worse, ~chile, ~coquimbo,
-  "casen_pov_inc", "Pobreza por ingresos (0–17)",                 "CASEN 2024",            "0–17",           TRUE,            12.4,   14.1,
-  "casen_pov_mdim","Pobreza multidimensional (0–17)",             "CASEN 2024",            "0–17",           TRUE,            18.7,   20.0,
-  "casen_attend",  "Asistencia escolar (6–17)",                   "CASEN 2024",            "6–17",           FALSE,           95.2,   94.1,
-  "casen_noatt",   "Inasistencia escolar (6–17)",                 "CASEN 2024",            "6–17",           TRUE,             4.8,    5.9,
-  "poli_vict",     "Victimización (12 meses)",                    "Polivictimización 2023","según encuesta", TRUE,            32.0,   34.6,
-  "poli_poly",     "Polivictimización (12 meses)",                "Polivictimización 2023","según encuesta", TRUE,            12.5,   13.8,
-  "eanna_childlab","Trabajo infantil",                            "EANNA 2023",            "según encuesta", TRUE,             6.9,    7.4,
-  "eanna_care",    "Cuidados intensivos / carga de cuidados",     "EANNA 2023",            "según encuesta", TRUE,            21.5,   22.9
-) %>%
-  mutate(delta_pp = coquimbo - chile)
+#| include: false
+kpis <- readRDS("data/kpis_casen_2024.rds")
+
+region <- unique(kpis$region_name)[1]
+kpis <- kpis %>% rename(coquimbo = region)  # para que tu chunk 2 siga igual
+
 ```
 <div class="kpi-grid">
 
