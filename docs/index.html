@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Panorama – Derechos de la infancia en Chile</title>
+<title>Panorama</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,7 +24,6 @@ ul.task-list li input[type="checkbox"] {
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
@@ -40,13 +39,13 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-be81654f62d3fa423899e4ff0c890d9b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-6fe02bd7c587f399cf31775b751f95b2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
+  "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
+  "panel-placement": "start",
+  "type": "textbox",
   "limit": 50,
   "keyboard-shortcut": [
     "f",
@@ -70,72 +69,14 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
-<body class="nav-fixed fullcontent quarto-light">
+<body class="fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Derechos de la infancia en Chile</span>
-    </a>
-  </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-  <span class="navbar-toggler-icon"></span>
-</button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
-<span class="menu-text">Panorama</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./metodologia.html"> 
-<span class="menu-text">Metodología</span></a>
-  </li>  
-</ul>
-          </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
-</div>
-      </div> <!-- /container-fluid -->
-    </nav>
-</header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
@@ -161,61 +102,259 @@ window.Quarto = {
 </header>
 
 
-<p>#| include: false knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)</p>
 <section id="derechos-de-la-infancia-en-chile" class="level1 hero">
 <h1>Derechos de la infancia en Chile</h1>
-<p><span class="chip">MVP</span> Indicadores seleccionados para <strong>0–17 años</strong>, con comparación <strong>Chile vs Coquimbo</strong>.<br>
-(En esta etapa usamos datos de prueba para validar diseño; luego conectamos CASEN 2024, EANNA, Polivictimización y ELPI).</p>
-</section>
-<p>library(tidyverse) library(glue) library(scales)</p>
-<p>fmt_pct &lt;- function(x) number(x, accuracy = 0.1, suffix = “%”)</p>
-<p>region &lt;- “Coquimbo”</p>
-<section id="datos-mock-de-prueba-para-validar-estética-y-layout" class="level1">
-<h1>Datos MOCK (de prueba) para validar estética y layout</h1>
-<p>kpis &lt;- tibble::tribble( ~indicator_id, ~indicator_label, ~source, ~universe, ~higher_is_worse, ~chile, ~coquimbo, “casen_pov_inc”, “Pobreza por ingresos (0–17)”, “CASEN 2024”, “0–17”, TRUE, 12.4, 14.1, “casen_pov_mdim”,“Pobreza multidimensional (0–17)”, “CASEN 2024”, “0–17”, TRUE, 18.7, 20.0, “casen_attend”, “Asistencia escolar (6–17)”, “CASEN 2024”, “6–17”, FALSE, 95.2, 94.1, “casen_noatt”, “Inasistencia escolar (6–17)”, “CASEN 2024”, “6–17”, TRUE, 4.8, 5.9, “poli_vict”, “Victimización (12 meses)”, “Polivictimización 2023”,“según encuesta”, TRUE, 32.0, 34.6, “poli_poly”, “Polivictimización (12 meses)”, “Polivictimización 2023”,“según encuesta”, TRUE, 12.5, 13.8, “eanna_childlab”,“Trabajo infantil”, “EANNA 2023”, “según encuesta”, TRUE, 6.9, 7.4, “eanna_care”, “Cuidados intensivos / carga de cuidados”, “EANNA 2023”, “según encuesta”, TRUE, 21.5, 22.9 ) %&gt;% mutate(delta_pp = coquimbo - chile)</p>
 <div class="kpi-grid">
-<p>make_card &lt;- function(lbl, uni, src, chile, reg, delta){ arrow &lt;- ifelse(delta &gt;= 0, “↑”, “↓”) delta_txt &lt;- glue(“{arrow} {number(abs(delta), accuracy = 0.1)} pp vs Chile”)</p>
-<p>glue(’</p>
+<div class="kpi-grid">
 <div class="kpi-card">
-<pre><code>&lt;div class="kpi-title"&gt;{lbl}&lt;/div&gt;
-&lt;div class="kpi-row"&gt;
-  &lt;div&gt;
-    &lt;div class="kpi-label"&gt;Chile&lt;/div&gt;
-    &lt;div class="kpi-value"&gt;{fmt_pct(chile)}&lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div&gt;
-    &lt;div class="kpi-label"&gt;{region}&lt;/div&gt;
-    &lt;div class="kpi-value"&gt;{fmt_pct(reg)}&lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="kpi-delta"&gt;Δ &lt;strong&gt;{delta_txt}&lt;/strong&gt;&lt;/div&gt;
-&lt;div class="kpi-foot"&gt;
-  &lt;span class="chip"&gt;{src}&lt;/span&gt;
-  &lt;span class="chip"&gt;{uni}&lt;/span&gt;
-&lt;/div&gt;</code></pre>
+<div class="kpi-title">
+Pobreza por ingresos (0–17)
 </div>
-<p>’) }</p>
-<p>cards_df &lt;- kpis %&gt;% select(indicator_label, universe, source, chile, coquimbo, delta_pp)</p>
-<p>html_cards &lt;- pmap_chr( list(cards_df<span class="math inline">\(indicator_label, cards_df\)</span>universe, cards_df<span class="math inline">\(source,
-cards_df\)</span>chile, cards_df<span class="math inline">\(coquimbo, cards_df\)</span>delta_pp), make_card )</p>
-<p>cat(paste(html_cards, collapse = “”))</p>
+<div class="kpi-row">
+<div>
+<div class="kpi-label">
+Chile
 </div>
-<p>k2 &lt;- kpis %&gt;% mutate( worse_score = if_else(higher_is_worse, delta_pp, -delta_pp), abs_gap = abs(delta_pp) )</p>
-<p>worst &lt;- k2 %&gt;% arrange(desc(worse_score)) %&gt;% slice(1) closest &lt;- k2 %&gt;% arrange(abs_gap) %&gt;% slice(1)</p>
-<p>cat(glue(“- En <strong>{worst<span class="math inline">\(indicator_label}**, {region} está **{number(worst\)</span>delta_pp, accuracy = 0.1)} pp</strong> respecto de Chile.”)) cat(glue(“- La diferencia más baja aparece en <strong>{closest<span class="math inline">\(indicator_label}** (**{number(closest\)</span>delta_pp, accuracy = 0.1)} pp</strong>).”)) cat(“- <em>Nota:</em> los universos varían por encuesta. Revisa definiciones en <strong>Metodología</strong>.”)</p>
-Autora
+<div class="kpi-value">
+12.4%
+</div>
+</div>
+<div>
+<div class="kpi-label">
+Coquimbo
+</div>
+<div class="kpi-value">
+14.1%
+</div>
+</div>
+</div>
+<div class="kpi-delta">
+Δ <strong>↑ 1.7 pp vs Chile</strong>
+</div>
+<div class="kpi-foot">
+<span class="chip">CASEN 2024</span><span class="chip">0–17</span>
+</div>
+</div>
+<div class="kpi-card">
+<div class="kpi-title">
+Pobreza multidimensional (0–17)
+</div>
+<div class="kpi-row">
+<div>
+<div class="kpi-label">
+Chile
+</div>
+<div class="kpi-value">
+18.7%
+</div>
+</div>
+<div>
+<div class="kpi-label">
+Coquimbo
+</div>
+<div class="kpi-value">
+20.0%
+</div>
+</div>
+</div>
+<div class="kpi-delta">
+Δ <strong>↑ 1.3 pp vs Chile</strong>
+</div>
+<div class="kpi-foot">
+<span class="chip">CASEN 2024</span><span class="chip">0–17</span>
+</div>
+</div>
+<div class="kpi-card">
+<div class="kpi-title">
+Asistencia escolar (6–17)
+</div>
+<div class="kpi-row">
+<div>
+<div class="kpi-label">
+Chile
+</div>
+<div class="kpi-value">
+95.2%
+</div>
+</div>
+<div>
+<div class="kpi-label">
+Coquimbo
+</div>
+<div class="kpi-value">
+94.1%
+</div>
+</div>
+</div>
+<div class="kpi-delta">
+Δ <strong>↓ 1.1 pp vs Chile</strong>
+</div>
+<div class="kpi-foot">
+<span class="chip">CASEN 2024</span><span class="chip">6–17</span>
+</div>
+</div>
+<div class="kpi-card">
+<div class="kpi-title">
+Inasistencia escolar (6–17)
+</div>
+<div class="kpi-row">
+<div>
+<div class="kpi-label">
+Chile
+</div>
+<div class="kpi-value">
+4.8%
+</div>
+</div>
+<div>
+<div class="kpi-label">
+Coquimbo
+</div>
+<div class="kpi-value">
+5.9%
+</div>
+</div>
+</div>
+<div class="kpi-delta">
+Δ <strong>↑ 1.1 pp vs Chile</strong>
+</div>
+<div class="kpi-foot">
+<span class="chip">CASEN 2024</span><span class="chip">6–17</span>
+</div>
+</div>
+<div class="kpi-card">
+<div class="kpi-title">
+Victimización (12 meses)
+</div>
+<div class="kpi-row">
+<div>
+<div class="kpi-label">
+Chile
+</div>
+<div class="kpi-value">
+32.0%
+</div>
+</div>
+<div>
+<div class="kpi-label">
+Coquimbo
+</div>
+<div class="kpi-value">
+34.6%
+</div>
+</div>
+</div>
+<div class="kpi-delta">
+Δ <strong>↑ 2.6 pp vs Chile</strong>
+</div>
+<div class="kpi-foot">
+<span class="chip">Polivictimización 2023</span><span class="chip">según encuesta</span>
+</div>
+</div>
+<div class="kpi-card">
+<div class="kpi-title">
+Polivictimización (12 meses)
+</div>
+<div class="kpi-row">
+<div>
+<div class="kpi-label">
+Chile
+</div>
+<div class="kpi-value">
+12.5%
+</div>
+</div>
+<div>
+<div class="kpi-label">
+Coquimbo
+</div>
+<div class="kpi-value">
+13.8%
+</div>
+</div>
+</div>
+<div class="kpi-delta">
+Δ <strong>↑ 1.3 pp vs Chile</strong>
+</div>
+<div class="kpi-foot">
+<span class="chip">Polivictimización 2023</span><span class="chip">según encuesta</span>
+</div>
+</div>
+<div class="kpi-card">
+<div class="kpi-title">
+Trabajo infantil
+</div>
+<div class="kpi-row">
+<div>
+<div class="kpi-label">
+Chile
+</div>
+<div class="kpi-value">
+6.9%
+</div>
+</div>
+<div>
+<div class="kpi-label">
+Coquimbo
+</div>
+<div class="kpi-value">
+7.4%
+</div>
+</div>
+</div>
+<div class="kpi-delta">
+Δ <strong>↑ 0.5 pp vs Chile</strong>
+</div>
+<div class="kpi-foot">
+<span class="chip">EANNA 2023</span><span class="chip">según encuesta</span>
+</div>
+</div>
+<div class="kpi-card">
+<div class="kpi-title">
+Cuidados intensivos / carga de cuidados
+</div>
+<div class="kpi-row">
+<div>
+<div class="kpi-label">
+Chile
+</div>
+<div class="kpi-value">
+21.5%
+</div>
+</div>
+<div>
+<div class="kpi-label">
+Coquimbo
+</div>
+<div class="kpi-value">
+22.9%
+</div>
+</div>
+</div>
+<div class="kpi-delta">
+Δ <strong>↑ 1.4 pp vs Chile</strong>
+</div>
+<div class="kpi-foot">
+<span class="chip">EANNA 2023</span><span class="chip">según encuesta</span>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li>En <strong>Victimización (12 meses)</strong>, Coquimbo está <strong>2.6 pp</strong> respecto de Chile.- La diferencia más baja aparece en <strong>Trabajo infantil</strong> (<strong>0.5 pp</strong>).- <em>Nota:</em> los universos varían por encuesta. Revisa definiciones en <strong>Metodología</strong>.</li>
+</ul>
+</section>
 <div class="kpi-card">
 <div class="kpi-title">
 Javiera Porcel Bugueño
 </div>
 <div style="color:#6B6B78; margin-top:-6px;">
-Sociologa. Magister en Políticas Públicas. Diplomada en Derechos de la Infancia. Diplomada en Ciencia de Datos. Eterna aprendiz y entusiasta por la investigación.
+<pre><code>Sociologa. Magister en Políticas Públicas. Diplomada en Derechos de la Infancia. Diplomada en Ciencia de Datos.
+Eterna aprendiz y entusiasta por la investigación.</code></pre>
 </div>
 </div>
-<p>```</p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
