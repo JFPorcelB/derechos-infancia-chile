@@ -8,6 +8,7 @@ title: "Panorama"
 
 ```{r}
 #| include: false
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 library(tidyverse)
 library(glue)
 library(scales)
