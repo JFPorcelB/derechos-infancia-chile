@@ -24,12 +24,17 @@ h1, h2, h3 { color: $brand2; }
 
 .kpi-grid{
   display: grid;
-  grid-template-columns: repeat(4, minmax(230px, 1fr));
-  gap: 14px;
-  margin-top: 10px;
+  gap: 18px;
+  grid-template-columns: repeat(4, minmax(240px, 1fr));
 }
-@media (max-width: 1100px){ .kpi-grid{ grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 650px){ .kpi-grid{ grid-template-columns: 1fr; } }
+
+@media (max-width: 1200px){
+  .kpi-grid{ grid-template-columns: repeat(2, minmax(260px, 1fr)); }
+}
+@media (max-width: 720px){
+  .kpi-grid{ grid-template-columns: 1fr; }
+}
+
 
 .kpi-card{
   background: white;
@@ -40,11 +45,15 @@ h1, h2, h3 { color: $brand2; }
 }
 
 .kpi-title{
-  font-weight: 700;
-  font-size: 0.95rem;
-  color: $brand2;
-  margin-bottom: 10px;
+  font-size: 1.05rem;
+  line-height: 1.25;
+  max-width: 22ch;
 }
+
+.kpi-value{
+  font-size: 1.85rem;
+}
+
 
 .kpi-row{
   display: flex;
@@ -105,5 +114,208 @@ h1, h2, h3 { color: $brand2; }
 .kpi-card:hover{
   transform: translateY(-2px);
   box-shadow: 0 6px 18px rgba(30, 10, 80, 0.08);
+}
+/* ===== Paleta pastel lila + grises ===== */
+:root{
+  --ink: #1f2230;
+  --muted: #6b6f7d;
+  --bg: #fbfbfe;
+
+  --lilac-50:  #f6f4ff;
+  --lilac-100: #efeaff;
+  --lilac-200: #e3dcff;
+  --lilac-300: #cdbfff;
+  --lilac-500: #8e79d6;   /* lila suave (no fuerte) */
+
+  --border: rgba(142, 121, 214, 0.20);
+  --shadow: 0 10px 30px rgba(20, 18, 35, 0.06);
+}
+
+body{
+  color: var(--ink);
+  background: var(--bg);
+}
+
+/* Títulos menos “neón” */
+h1, h2, h3, .navbar-title{
+  color: var(--lilac-500) !important;
+  letter-spacing: -0.01em;
+}
+
+/* ===== Tarjetas KPI ===== */
+.kpi-grid{
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(2, minmax(240px, 1fr));  /* <- 2 columnas */
+}
+
+/* Responsive: en pantallas chicas, 1 columna */
+@media (max-width: 720px){
+  .kpi-grid{ grid-template-columns: 1fr; }
+}
+
+
+.kpi-card{
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, #ffffff 0%, var(--lilac-50) 100%);
+  border-radius: 18px;
+  padding: 18px 18px 16px 18px;
+  box-shadow: var(--shadow);
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.kpi-card:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 14px 40px rgba(20, 18, 35, 0.09);
+}
+
+.kpi-title{
+  color: var(--lilac-500);
+  font-weight: 750;
+  font-size: 1.02rem;
+  line-height: 1.25;
+  margin-bottom: 10px;
+}
+
+/* Chile vs Región */
+.kpi-row{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  align-items: start;
+}
+
+.kpi-label{
+  color: var(--muted);
+  font-size: 0.92rem;
+  margin-bottom: 4px;
+}
+
+.kpi-value{
+  color: var(--ink);
+  font-weight: 850;
+  font-size: 1.75rem;
+  letter-spacing: -0.02em;
+}
+
+/* Delta */
+.kpi-delta{
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.kpi-delta strong{
+  color: var(--lilac-500);
+  font-weight: 800;
+}
+
+/* Chips */
+.kpi-foot{
+  margin-top: 12px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.chip{
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: var(--lilac-100);
+  border: 1px solid var(--border);
+  color: var(--lilac-500);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+/* Evita que la grilla llegue pegada al borde y se corte */
+.page-columns .content{
+  padding-left: 18px;
+  padding-right: 18px;
+}
+
+.kpi-grid{
+  margin: 18px 0 10px 0;
+}
+
+.quick-read{
+  margin-top: 14px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid var(--border);
+  color: var(--ink);
+  box-shadow: 0 8px 24px rgba(20, 18, 35, 0.05);
+}
+
+.quick-read p, .quick-read li{
+  margin: 0;
+}
+
+
+.quick-read{
+  margin-top: 14px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 24px rgba(20, 18, 35, 0.05);
+  max-width: 980px;
+}
+
+.quick-read-title{
+  color: var(--muted);
+  font-weight: 750;
+  margin-bottom: 6px;
+}
+
+.quick-read p{ margin: 0; line-height: 1.6; }
+
+.author-card{
+  max-width: 980px;
+  border: 1px solid var(--border);
+  background: #fff;
+  border-radius: 18px;
+  padding: 16px 18px;
+  box-shadow: 0 10px 30px rgba(20, 18, 35, 0.06);
+  overflow: visible; /* NO scroll */
+}
+
+.author-name{
+  color: var(--lilac-500);
+  font-weight: 850;
+  font-size: 1.15rem;
+  margin-bottom: 8px;
+}
+
+.author-bio{ line-height: 1.6; }
+
+:root{
+  --col-chile:  #8F8AE6;
+  --col-region: #C7C4FF;
+}
+/* Gráfico dentro de cada KPI card */
+.kpi-spark{
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-top: 8px;
+  border-radius: 12px;
+}
+
+/* Un poco más de aire dentro de la card */
+.kpi-card{
+  padding: 18px 18px 14px 18px;
+}
+.kpi-mini{
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+.kpi-mini img{
+  width: 100%;
+  height: auto;
+  display: block;
 }
 

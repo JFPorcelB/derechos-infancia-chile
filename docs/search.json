@@ -2,8 +2,22 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Panorama",
+    "title": "Panorama de la Infancia en Chile",
     "section": "",
-    "text": "Derechos de la infancia en Chile\n\n\n\n\nPobreza por ingresos (0–17)\n\n\n\n\nChile\n\n\n24.9%\n\n\n\n\nCoquimbo\n\n\n28.9%\n\n\n\n\nΔ ↑ 4.0 pp vs Chile\n\n\nCASEN 20240–17\n\n\n\n\nPobreza multidimensional (0–17)\n\n\n\n\nChile\n\n\n22.5%\n\n\n\n\nCoquimbo\n\n\n21.3%\n\n\n\n\nΔ ↓ 1.2 pp vs Chile\n\n\nCASEN 20240–17\n\n\n\n\nAsistencia a establecimiento (6–17)\n\n\n\n\nChile\n\n\n98.6%\n\n\n\n\nCoquimbo\n\n\n98.8%\n\n\n\n\nΔ ↑ 0.2 pp vs Chile\n\n\nCASEN 20246–17\n\n\n\n\nNo asiste a establecimiento (6–17)\n\n\n\n\nChile\n\n\n1.4%\n\n\n\n\nCoquimbo\n\n\n1.2%\n\n\n\n\nΔ ↓ 0.2 pp vs Chile\n\n\nCASEN 20246–17\n\n\n\n\n\nEn Pobreza por ingresos (0–17), Coquimbo está 4.0 pp respecto de Chile.- La diferencia más baja aparece en Asistencia a establecimiento (6–17) (0.2 pp).- Nota: los universos varían por encuesta. Revisa definiciones en Metodología.\n\n\n\n\nJaviera Porcel Bugueño\n\n\nSociologa. Magister en Políticas Públicas. Diplomada en Derechos de la Infancia. Diplomada en Ciencia de Datos.\nEterna aprendiz y entusiasta por la investigación."
+    "text": "Derechos de la infancia en Chile\n\n\n\n\nPobreza por ingresos (0–17)\n\n\n\n\n\nΔ ↑ 4.0 pp vs Chile\n\n\n &lt;span class=\"chip\"&gt;CASEN 2024&lt;/span&gt;\n &lt;span class=\"chip\"&gt;0–17&lt;/span&gt;\n\n\n\n\nPobreza multidimensional (0–17)\n\n\n\n\n\nΔ ↓ 1.2 pp vs Chile\n\n\n &lt;span class=\"chip\"&gt;CASEN 2024&lt;/span&gt;\n &lt;span class=\"chip\"&gt;0–17&lt;/span&gt;\n\n\n\n\nAsistencia a establecimiento (6–17)\n\n\n\n\n\nΔ ↑ 0.2 pp vs Chile\n\n\n &lt;span class=\"chip\"&gt;CASEN 2024&lt;/span&gt;\n &lt;span class=\"chip\"&gt;6–17&lt;/span&gt;\n\n\n\n\nNo asiste a establecimiento (6–17)\n\n\n\n\n\nΔ ↓ 0.2 pp vs Chile\n\n\n &lt;span class=\"chip\"&gt;CASEN 2024&lt;/span&gt;\n &lt;span class=\"chip\"&gt;6–17&lt;/span&gt;\n\n\n\nLectura rápidaEn Pobreza por ingresos (0–17), Coquimbo está 4.0 pp respecto de Chile. La diferencia más baja aparece en Asistencia a establecimiento (6–17) (0.2 pp). Nota: los universos varían por encuesta. Revisa definiciones en Metodología.\n\nAutora\n\n\n\nJaviera Porcel Bugueño\n\n\nSocióloga. Magíster en Políticas Públicas. Diplomada en Derechos de la Infancia.\nDiplomada en Ciencia de Datos. Eterna aprendiz y entusiasta por la investigación."
+  },
+  {
+    "objectID": "index.html#casen-2024-chile-vs-coquimbo",
+    "href": "index.html#casen-2024-chile-vs-coquimbo",
+    "title": "Panorama de la Infancia en Chile",
+    "section": "",
+    "text": "Javiera Porcel Bugueño\n\n\nSociologa. Magister en Políticas Públicas. Diplomada en Derechos de la Infancia.\nDiplomada en Ciencia de Datos. Eterna aprendiz y entusiasta por la investigación."
+  },
+  {
+    "objectID": "metodologia.html",
+    "href": "metodologia.html",
+    "title": "Metodología",
+    "section": "",
+    "text": "Aquí vamos a explicar:\n\nFuentes: CASEN 2024, EANNA 2023, Polivictimización 2023, ELPI\n\nUniversos y definiciones de indicadores\n\nNotas de estimación (ponderadores y diseño muestral)"
   }
 ]

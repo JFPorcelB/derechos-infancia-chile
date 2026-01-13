@@ -1,29 +1,120 @@
 ---
-title: "Panorama"
+title: "Panorama de la Infancia en Chile"
+format:
+  html:
+    theme: cosmo
+    css: styles.css
 ---
 
+
+```{r}
+#| include: false
+#| message: false
+#| warning: false
+#| results: asis
+
+library(dplyr)
+library(purrr)
+library(glue)
+library(scales)
+library(ggplot2)
+library(base64enc)
+
+fmt_pct <- function(x) scales::number(x, accuracy = 0.1, suffix = "%")
+
+# Colores pastel (ajusta si quieres)
+col_chile  <- "#8F8AE6"
+col_region <- "#C7C4FF"
+
+# Cargar KPIs ya calculados (desde tu script)
+kpis <- readRDS("data/kpis_casen_2024.rds")
+region_label <- unique(kpis$region_name)[1]
+
+# Texto resumen
+worst <- kpis %>%
+  mutate(worse_score = if_else(higher_is_worse, delta_pp, -delta_pp)) %>%
+  arrange(desc(worse_score)) %>%
+  slice(1)
+
+closest <- kpis %>%
+  mutate(abs_gap = abs(delta_pp)) %>%
+  arrange(abs_gap) %>%
+  slice(1)
+
+txt_resumen <- paste0(
+  "En **", worst$indicator_label, "**, ", region_label, " está **",
+  sprintf("%.1f", worst$delta_pp), " pp** respecto de Chile. ",
+  "La diferencia más baja aparece en **", closest$indicator_label, "** (**",
+  sprintf("%.1f", closest$delta_pp), " pp**). ",
+  "*Nota:* los universos varían por encuesta. Revisa definiciones en **Metodología**."
+)
+
+# Mini gráfico (Chile vs Región) como imagen embebida
+mini_plot_uri <- function(chile, region){
+  dfp <- tibble(
+    zona = factor(c("Chile", region_label), levels = c("Chile", region_label)),
+    val  = c(chile, region)
+  )
+
+  p <- ggplot(dfp, aes(x = val, y = zona, fill = zona)) +
+    geom_col(width = 0.55, show.legend = FALSE) +
+    geom_text(aes(label = sprintf("%.1f%%", val)), hjust = -0.05, size = 3.2) +
+    scale_fill_manual(values = c("Chile" = col_chile, region_label = col_region)) +
+    scale_x_continuous(
+      limits = c(0, max(dfp$val) * 1.20),
+      expand = expansion(mult = c(0, 0.02))
+    ) +
+    theme_void(base_size = 12) +
+    theme(
+      plot.margin = margin(0, 0, 0, 0),
+      axis.text.y = element_text(color = "#6b6f7d", size = 10)
+    )
+
+  tf <- tempfile(fileext = ".png")
+  ggsave(tf, p, width = 3.2, height = 1.2, dpi = 200, bg = "transparent")
+  base64enc::dataURI(file = tf, mime = "image/png")
+}
+
+make_card <- function(lbl, uni, src, chile, reg, delta){
+  arrow <- ifelse(delta >= 0, "↑", "↓")
+  delta_txt <- glue("{arrow} {number(abs(delta), accuracy = 0.1)} pp vs Chile")
+  img_uri <- mini_plot_uri(chile, reg)
+
+  glue(
+    '<div class="kpi-card">
+        <div class="kpi-title">{lbl}</div>
+        <div class="kpi-mini"><img src="{img_uri}" alt="Mini chart"/></div>
+        <div class="kpi-delta">Δ <strong>{delta_txt}</strong></div>
+        <div class="kpi-foot">
+          <span class="chip">{src}</span>
+          <span class="chip">{uni}</span>
+        </div>
+     </div>'
+  )
+}
+
+cards_df <- kpis %>%
+  select(indicator_label, universe, source, chile, region, delta_pp)
+
+html_cards <- pmap_chr(
+  list(
+    cards_df$indicator_label,
+    cards_df$universe,
+    cards_df$source,
+    cards_df$chile,
+    cards_df$region,
+    cards_df$delta_pp
+  ),
+  make_card
+)
+invisible(NULL)
+
+
+```
 <div class="hero">
 
 # Derechos de la infancia en Chile
 
-```{r}
-#| include: false
-knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
-library(tidyverse)
-library(glue)
-library(scales)
-
-fmt_pct <- function(x) number(x, accuracy = 0.1, suffix = "%")
-region <- "Coquimbo"
-
-# Datos MOCK (de prueba) para validar estética y layout
-#| include: false
-kpis <- readRDS("data/kpis_casen_2024.rds")
-
-region <- unique(kpis$region_name)[1]
-kpis <- kpis %>% rename(coquimbo = region)  # para que tu chunk 2 siga igual
-
-```
 <div class="kpi-grid">
 
 ```{r}
@@ -32,36 +123,10 @@ kpis <- kpis %>% rename(coquimbo = region)  # para que tu chunk 2 siga igual
 #| message: false
 #| warning: false
 
-make_card <- function(lbl, uni, src, chile, reg, delta){
-  arrow <- ifelse(delta >= 0, "↑", "↓")
-  delta_txt <- glue("{arrow} {number(abs(delta), accuracy = 0.1)} pp vs Chile")
-
-  glue(
-    '<div class="kpi-card"><div class="kpi-title">{lbl}</div><div class="kpi-row"><div><div class="kpi-label">Chile</div><div class="kpi-value">{fmt_pct(chile)}</div></div><div><div class="kpi-label">{region}</div><div class="kpi-value">{fmt_pct(reg)}</div></div></div><div class="kpi-delta">Δ <strong>{delta_txt}</strong></div><div class="kpi-foot"><span class="chip">{src}</span><span class="chip">{uni}</span></div></div>'
-  )
-}
-
-cards_df <- kpis %>%
-  select(indicator_label, universe, source, chile, coquimbo, delta_pp)
-
-html_cards <- pmap_chr(
-  list(
-    cards_df$indicator_label,
-    cards_df$universe,
-    cards_df$source,
-    cards_df$chile,
-    cards_df$coquimbo,
-    cards_df$delta_pp
-  ),
-  make_card
-)
-
 cat('<div class="kpi-grid">')
-cat(paste(html_cards, collapse = ""))
+cat(paste(html_cards, collapse = "\n"))
 cat('</div>')
-
 ```
-</div>
 
 ```{r}
 #| echo: false
@@ -69,27 +134,19 @@ cat('</div>')
 #| message: false
 #| warning: false
 
-k2 <- kpis %>%
-  mutate(
-    worse_score = if_else(higher_is_worse, delta_pp, -delta_pp),
-    abs_gap = abs(delta_pp)
-  )
-
-worst   <- k2 %>% arrange(desc(worse_score)) %>% slice(1)
-closest <- k2 %>% arrange(abs_gap) %>% slice(1)
-
-cat(glue("- En **{worst$indicator_label}**, {region} está **{number(worst$delta_pp, accuracy = 0.1)} pp** respecto de Chile.\n"))
-cat(glue("- La diferencia más baja aparece en **{closest$indicator_label}** (**{number(closest$delta_pp, accuracy = 0.1)} pp**).\n"))
-cat("- *Nota:* los universos varían por encuesta. Revisa definiciones en **Metodología**.\n")
+cat('')
+cat('Lectura rápida')
+cat(paste0('', txt_resumen, ''))
+cat('')
 ```
-</div>
-<div class="kpi-card">
-  <div class="kpi-title">Javiera Porcel Bugueño</div>
-  <div style="color:#6B6B78; margin-top:-6px;">
-    Sociologa. Magister en Políticas Públicas. Diplomada en Derechos de la Infancia. Diplomada en Ciencia de Datos.
-    Eterna aprendiz y entusiasta por la investigación.
+<h3 style="margin-top: 22px;">Autora</h3>
+
+<div class="author-card">
+  <div class="author-name">Javiera Porcel Bugueño</div>
+  <div class="author-bio">
+    Socióloga. Magíster en Políticas Públicas. Diplomada en Derechos de la Infancia.
+    Diplomada en Ciencia de Datos. Eterna aprendiz y entusiasta por la investigación.
   </div>
 </div>
-
 
 
