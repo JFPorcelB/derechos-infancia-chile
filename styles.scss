@@ -319,3 +319,126 @@ h1, h2, h3, .navbar-title{
   display: block;
 }
 
+/* ===== Landing layout (maqueta) ===== */
+.landing{
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 36px;
+  align-items: start;
+  padding: 24px 18px;
+}
+
+@media (max-width: 980px){
+  .landing{ grid-template-columns: 1fr; }
+}
+
+/* Izquierda: mapa */
+.landing-left{
+  position: sticky;
+  top: 18px;
+}
+
+.map-wrap{
+  border-radius: 22px;
+  padding: 10px;
+  background: transparent;
+}
+
+.chile-map{
+  width: 100%;
+  height: auto;
+  display: block;
+
+  /* “morado oscuro” sin editar el SVG (aprox) */
+  filter: grayscale(1) sepia(1) hue-rotate(248deg) saturate(6) brightness(0.9);
+  opacity: 0.95;
+}
+
+/* Texto “Selecciona una región…” */
+.map-hint{
+  margin-top: 18px;
+  text-align: center;
+  color: #2B2B33;
+}
+
+.map-hint-title{ font-size: 1.35rem; }
+.map-hint-sub{ font-size: 1.35rem; }
+.map-hint-arrow{
+  margin-top: 10px;
+  font-size: 2.2rem;
+  color: #6D5BD0;
+}
+
+/* Derecha: grilla de cards “íconos” placeholder */
+.cards-grid{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(160px, 1fr));
+  gap: 22px;
+  align-items: center;
+}
+
+@media (max-width: 980px){
+  .cards-grid{ grid-template-columns: repeat(2, minmax(160px, 1fr)); }
+}
+
+.icon-card{
+  border-radius: 26px;
+  background: #E3DCFF;
+  box-shadow: 0 10px 30px rgba(20, 18, 35, 0.06);
+  height: 170px;
+  display: grid;
+  place-items: center;
+}
+
+.icon-skeleton{
+  width: 92px;
+  height: 92px;
+  border-radius: 18px;
+  background: rgba(109, 91, 208, 0.18);
+}
+
+/* Bloque autora */
+.author-block{
+  margin-top: 22px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.author-avatar{
+  width: 62px;
+  height: 62px;
+  border-radius: 999px;
+  background: rgba(109, 91, 208, 0.25);
+}
+
+.author-title{
+  font-weight: 800;
+  color: #6D5BD0;
+}
+
+.author-sub{ color: #6B6B78; }
+
+/* Layout general: dos columnas */
+.landing{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 28px 18px;
+  display: grid;
+  grid-template-columns: 1.05fr 1.35fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* Columna izquierda pegada a la izquierda del contenedor */
+.landing-left{
+  justify-self: start;
+}
+
+/* Mapa: que no quede mini */
+.chile-map{
+  width: 360px;      /* ajusta: 320–420 suele funcionar bien */
+  height: auto;
+  display: block;
+  margin: 0;         /* importante para que no se centre */
+}
