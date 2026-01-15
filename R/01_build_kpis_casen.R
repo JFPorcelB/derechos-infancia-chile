@@ -172,3 +172,39 @@ kpis_all %>%
 
 message("OK: mini-gráficos en docs/figures/kpi_<id>_rXX.png")
 
+# -----------------------
+# 7) Exportar JSON para el mockup web (docs/)
+# -----------------------
+library(jsonlite)
+
+dir.create("docs/data", recursive = TRUE, showWarnings = FALSE)
+
+# a) KPIs por región (estructura cómoda para JS)
+kpis_json <- kpis_all %>%
+  arrange(region_code, indicator_id) %>%
+  group_by(region_code, region_name) %>%
+  summarise(
+    kpis = list(
+      tibble(
+        indicator_id = indicator_id,
+        indicator_label = indicator_label,
+        source = source,
+        universe = universe,
+        higher_is_worse = higher_is_worse,
+        chile = round(chile, 1),
+        region = round(region, 1),
+        delta_pp = round(delta_pp, 1),
+        # ruta del mini-gráfico ya creado (coincide con tu naming)
+        fig = sprintf("figures/kpi_%s_r%02d.png", indicator_id, region_code)
+      )
+    ),
+    .groups = "drop"
+  )
+
+payload <- list(
+  generated_at = format(Sys.time(), "%Y-%m-%d %H:%M:%S"),
+  regions = kpis_json
+)
+
+write_json(payload, "docs/data/kpis.json", auto_unbox = TRUE, pretty = TRUE)
+message("OK: exportado docs/data/kpis.json")

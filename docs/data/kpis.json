@@ -1,0 +1,805 @@
+{
+  "generated_at": "2026-01-15 13:00:50",
+  "regions": [
+    {
+      "region_code": 1,
+      "region_name": "Tarapacá",
+      "kpis": [
+        {
+          "indicator_id": "casen_attend",
+          "indicator_label": "Asistencia a establecimiento (6–17)",
+          "source": "CASEN 2024",
+          "universe": "6–17",
+          "higher_is_worse": false,
+          "chile": 98.6,
+          "region": 98.7,
+          "delta_pp": 0.1,
+          "fig": "figures/kpi_casen_attend_r01.png"
+        },
+        {
+          "indicator_id": "casen_noatt",
+          "indicator_label": "No asiste a establecimiento (6–17)",
+          "source": "CASEN 2024",
+          "universe": "6–17",
+          "higher_is_worse": true,
+          "chile": 1.4,
+          "region": 1.3,
+          "delta_pp": -0.1,
+          "fig": "figures/kpi_casen_noatt_r01.png"
+        },
+        {
+          "indicator_id": "casen_pov_inc",
+          "indicator_label": "Pobreza por ingresos (0–17)",
+          "source": "CASEN 2024",
+          "universe": "0–17",
+          "higher_is_worse": true,
+          "chile": 24.9,
+          "region": 31,
+          "delta_pp": 6.2,
+          "fig": "figures/kpi_casen_pov_inc_r01.png"
+        },
+        {
+          "indicator_id": "casen_pov_mdim",
+          "indicator_label": "Pobreza multidimensional (0–17)",
+          "source": "CASEN 2024",
+          "universe": "0–17",
+          "higher_is_worse": true,
+          "chile": 22.5,
+          "region": 28.5,
+          "delta_pp": 6,
+          "fig": "figures/kpi_casen_pov_mdim_r01.png"
+        }
+      ]
+    },
+    {
+      "region_code": 2,
+      "region_name": "Antofagasta",
+      "kpis": [
+        {
+          "indicator_id": "casen_attend",
+          "indicator_label": "Asistencia a establecimiento (6–17)",
+          "source": "CASEN 2024",
+          "universe": "6–17",
+          "higher_is_worse": false,
+          "chile": 98.6,
+          "region": 97.8,
+          "delta_pp": -0.8,
+          "fig": "figures/kpi_casen_attend_r02.png"
+        },
+        {
+          "indicator_id": "casen_noatt",
+          "indicator_label": "No asiste a establecimiento (6–17)",
+          "source": "CASEN 2024",
+          "universe": "6–17",
+          "higher_is_worse": true,
+          "chile": 1.4,
+          "region": 2.2,
+          "delta_pp": 0.8,
+          "fig": "figures/kpi_casen_noatt_r02.png"
+        },
+        {
+          "indicator_id": "casen_pov_inc",
+          "indicator_label": "Pobreza por ingresos (0–17)",
+          "source": "CASEN 2024",
+          "universe": "0–17",
+          "higher_is_worse": true,
+          "chile": 24.9,
+          "region": 24.8,
+          "delta_pp": -0.1,
+          "fig": "figures/kpi_casen_pov_inc_r02.png"
+        },
+        {
+          "indicator_id": "casen_pov_mdim",
+          "indicator_label": "Pobreza multidimensional (0–17)",
+          "source": "CASEN 2024",
+          "universe": "0–17",
+          "higher_is_worse": true,
+          "chile": 22.5,
+          "region": 22.4,
+          "delta_pp": -0.1,
+          "fig": "figures/kpi_casen_pov_mdim_r02.png"
+        }
+      ]
+    },
+    {
+      "region_code": 3,
+      "region_name": "Atacama",
+      "kpis": [
+        {
+          "indicator_id": "casen_attend",
+          "indicator_label": "Asistencia a establecimiento (6–17)",
+          "source": "CASEN 2024",
+          "universe": "6–17",
+          "higher_is_worse": false,
+          "chile": 98.6,
+          "region": 98.1,
+          "delta_pp": -0.5,
+          "fig": "figures/kpi_casen_attend_r03.png"
+        },
+        {
+          "indicator_id": "casen_noatt",
+          "indicator_label": "No asiste a establecimiento (6–17)",
+          "source": "CASEN 2024",
+          "universe": "6–17",
+          "higher_is_worse": true,
+          "chile": 1.4,
+          "region": 1.9,
+          "delta_pp": 0.5,
+          "fig": "figures/kpi_casen_noatt_r03.png"
+        },
+        {
+          "indicator_id": "casen_pov_inc",
+          "indicator_label": "Pobreza por ingresos (0–17)",
+          "source": "CASEN 2024",
+          "universe": "0–17",
+          "higher_is_worse": true,
+          "chile": 24.9,
+          "region": 26.5,
+          "delta_pp": 1.6,
+          "fig": "figures/kpi_casen_pov_inc_r03.png"
+        },
+        {
+          "indicator_id": "casen_pov_mdim",
+          "indicator_label": "Pobreza multidimensional (0–17)",
+          "source": "CASEN 2024",
+          "universe": "0–17",
+          "higher_is_worse": true,
+          "chile": 22.5,
+          "region": 26.4,
+          "delta_pp": 3.9,
+          "fig": "figures/kpi_casen_pov_mdim_r03.png"
+        }
+      ]
+    },
+    {
+      "region_code": 4,
+      "region_name": "Coquimbo",
+      "kpis": [
+        {
+          "indicator_id": "casen_attend",
+          "indicator_label": "Asistencia a establecimiento (6–17)",
+          "source": "CASEN 2024",
+          "universe": "6–17",
+          "higher_is_worse": false,
+          "chile": 98.6,
+          "region": 98.8,
+          "delta_pp": 0.2,
+          "fig": "figures/kpi_casen_attend_r04.png"
+        },
+        {
+          "indicator_id": "casen_noatt",
+          "indicator_label": "No asiste a establecimiento (6–17)",
+          "source": "CASEN 2024",
+          "universe": "6–17",
+          "higher_is_worse": true,
+          "chile": 1.4,
+          "region": 1.2,
+          "delta_pp": -0.2,
+          "fig": "figures/kpi_casen_noatt_r04.png"
+        },
+        {
+          "indicator_id": "casen_pov_inc",
+          "indicator_label": "Pobreza por ingresos (0–17)",
+          "source": "CASEN 2024",
+          "universe": "0–17",
+          "higher_is_worse": true,
+          "chile": 24.9,
+          "region": 28.9,
+          "delta_pp": 4,
+          "fig": "figures/kpi_casen_pov_inc_r04.png"
+        },
+        {
+          "indicator_id": "casen_pov_mdim",
+          "indicator_label": "Pobreza multidimensional (0–17)",
+          "source": "CASEN 2024",
+          "universe": "0–17",
+          "higher_is_worse": true,
+          "chile": 22.5,
+          "region": 21.3,
+          "delta_pp": -1.2,
+          "fig": "figures/kpi_casen_pov_mdim_r04.png"
+        }
+      ]
+    },
+    {
+      "region_code": 5,
+      "region_name": "Valparaíso",
+      "kpis": [
+        {
+          "indicator_id": "casen_attend",
+          "indicator_label": "Asistencia a establecimiento (6–17)",
+          "source": "CASEN 2024",
+          "universe": "6–17",
+          "higher_is_worse": false,
+          "chile": 98.6,
+          "region": 98.6,
+          "delta_pp": -0,
+          "fig": "figures/kpi_casen_attend_r05.png"
+        },
+        {
+          "indicator_id": "casen_noatt",
+          "indicator_label": "No asiste a establecimiento (6–17)",
+          "source": "CASEN 2024",
+          "universe": "6–17",
+          "higher_is_worse": true,
+          "chile": 1.4,
+          "region": 1.4,
+          "delta_pp": 0,
+          "fig": "figures/kpi_casen_noatt_r05.png"
+        },
+        {
+          "indicator_id": "casen_pov_inc",
+          "indicator_label": "Pobreza por ingresos (0–17)",
+          "source": "CASEN 2024",
+          "universe": "0–17",
+          "higher_is_worse": true,
+          "chile": 24.9,
+          "region": 25.7,
+          "delta_pp": 0.8,
+          "fig": "figures/kpi_casen_pov_inc_r05.png"
+        },
+        {
+          "indicator_id": "casen_pov_mdim",
+          "indicator_label": "Pobreza multidimensional (0–17)",
+          "source": "CASEN 2024",
+          "universe": "0–17",
+          "higher_is_worse": true,
+          "chile": 22.5,
+          "region": 20.8,
+          "delta_pp": -1.7,
+          "fig": "figures/kpi_casen_pov_mdim_r05.png"
+        }
+      ]
+    },
+    {
+      "region_code": 6,
+      "region_name": "O'Higgins",
+      "kpis": [
+        {
+          "indicator_id": "casen_attend",
+          "indicator_label": "Asistencia a establecimiento (6–17)",
+          "source": "CASEN 2024",
+          "universe": "6–17",
+          "higher_is_worse": false,
+          "chile": 98.6,
+          "region": 98.4,
+          "delta_pp": -0.2,
+          "fig": "figures/kpi_casen_attend_r06.png"
+        },
+        {
+          "indicator_id": "casen_noatt",
+          "indicator_label": "No asiste a establecimiento (6–17)",
+          "source": "CASEN 2024",
+          "universe": "6–17",
+          "higher_is_worse": true,
+          "chile": 1.4,
+          "region": 1.6,
+          "delta_pp": 0.2,
+          "fig": "figures/kpi_casen_noatt_r06.png"
+        },
+        {
+          "indicator_id": "casen_pov_inc",
+          "indicator_label": "Pobreza por ingresos (0–17)",
+          "source": "CASEN 2024",
+          "universe": "0–17",
+          "higher_is_worse": true,
+          "chile": 24.9,
+          "region": 26,
+          "delta_pp": 1.1,
+          "fig": "figures/kpi_casen_pov_inc_r06.png"
+        },
+        {
+          "indicator_id": "casen_pov_mdim",
+          "indicator_label": "Pobreza multidimensional (0–17)",
+          "source": "CASEN 2024",
+          "universe": "0–17",
+          "higher_is_worse": true,
+          "chile": 22.5,
+          "region": 23.5,
+          "delta_pp": 1,
+          "fig": "figures/kpi_casen_pov_mdim_r06.png"
+        }
+      ]
+    },
+    {
+      "region_code": 7,
+      "region_name": "Maule",
+      "kpis": [
+        {
+          "indicator_id": "casen_attend",
+          "indicator_label": "Asistencia a establecimiento (6–17)",
+          "source": "CASEN 2024",
+          "universe": "6–17",
+          "higher_is_worse": false,
+          "chile": 98.6,
+          "region": 99,
+          "delta_pp": 0.4,
+          "fig": "figures/kpi_casen_attend_r07.png"
+        },
+        {
+          "indicator_id": "casen_noatt",
+          "indicator_label": "No asiste a establecimiento (6–17)",
+          "source": "CASEN 2024",
+          "universe": "6–17",
+          "higher_is_worse": true,
+          "chile": 1.4,
+          "region": 1,
+          "delta_pp": -0.4,
+          "fig": "figures/kpi_casen_noatt_r07.png"
+        },
+        {
+          "indicator_id": "casen_pov_inc",
+          "indicator_label": "Pobreza por ingresos (0–17)",
+          "source": "CASEN 2024",
+          "universe": "0–17",
+          "higher_is_worse": true,
+          "chile": 24.9,
+          "region": 33.4,
+          "delta_pp": 8.6,
+          "fig": "figures/kpi_casen_pov_inc_r07.png"
+        },
+        {
+          "indicator_id": "casen_pov_mdim",
+          "indicator_label": "Pobreza multidimensional (0–17)",
+          "source": "CASEN 2024",
+          "universe": "0–17",
+          "higher_is_worse": true,
+          "chile": 22.5,
+          "region": 16.8,
+          "delta_pp": -5.7,
+          "fig": "figures/kpi_casen_pov_mdim_r07.png"
+        }
+      ]
+    },
+    {
+      "region_code": 8,
+      "region_name": "Biobío",
+      "kpis": [
+        {
+          "indicator_id": "casen_attend",
+          "indicator_label": "Asistencia a establecimiento (6–17)",
+          "source": "CASEN 2024",
+          "universe": "6–17",
+          "higher_is_worse": false,
+          "chile": 98.6,
+          "region": 99.4,
+          "delta_pp": 0.8,
+          "fig": "figures/kpi_casen_attend_r08.png"
+        },
+        {
+          "indicator_id": "casen_noatt",
+          "indicator_label": "No asiste a establecimiento (6–17)",
+          "source": "CASEN 2024",
+          "universe": "6–17",
+          "higher_is_worse": true,
+          "chile": 1.4,
+          "region": 0.6,
+          "delta_pp": -0.8,
+          "fig": "figures/kpi_casen_noatt_r08.png"
+        },
+        {
+          "indicator_id": "casen_pov_inc",
+          "indicator_label": "Pobreza por ingresos (0–17)",
+          "source": "CASEN 2024",
+          "universe": "0–17",
+          "higher_is_worse": true,
+          "chile": 24.9,
+          "region": 27.6,
+          "delta_pp": 2.7,
+          "fig": "figures/kpi_casen_pov_inc_r08.png"
+        },
+        {
+          "indicator_id": "casen_pov_mdim",
+          "indicator_label": "Pobreza multidimensional (0–17)",
+          "source": "CASEN 2024",
+          "universe": "0–17",
+          "higher_is_worse": true,
+          "chile": 22.5,
+          "region": 20.2,
+          "delta_pp": -2.3,
+          "fig": "figures/kpi_casen_pov_mdim_r08.png"
+        }
+      ]
+    },
+    {
+      "region_code": 9,
+      "region_name": "La Araucanía",
+      "kpis": [
+        {
+          "indicator_id": "casen_attend",
+          "indicator_label": "Asistencia a establecimiento (6–17)",
+          "source": "CASEN 2024",
+          "universe": "6–17",
+          "higher_is_worse": false,
+          "chile": 98.6,
+          "region": 99.5,
+          "delta_pp": 0.9,
+          "fig": "figures/kpi_casen_attend_r09.png"
+        },
+        {
+          "indicator_id": "casen_noatt",
+          "indicator_label": "No asiste a establecimiento (6–17)",
+          "source": "CASEN 2024",
+          "universe": "6–17",
+          "higher_is_worse": true,
+          "chile": 1.4,
+          "region": 0.5,
+          "delta_pp": -0.9,
+          "fig": "figures/kpi_casen_noatt_r09.png"
+        },
+        {
+          "indicator_id": "casen_pov_inc",
+          "indicator_label": "Pobreza por ingresos (0–17)",
+          "source": "CASEN 2024",
+          "universe": "0–17",
+          "higher_is_worse": true,
+          "chile": 24.9,
+          "region": 36.7,
+          "delta_pp": 11.8,
+          "fig": "figures/kpi_casen_pov_inc_r09.png"
+        },
+        {
+          "indicator_id": "casen_pov_mdim",
+          "indicator_label": "Pobreza multidimensional (0–17)",
+          "source": "CASEN 2024",
+          "universe": "0–17",
+          "higher_is_worse": true,
+          "chile": 22.5,
+          "region": 18.7,
+          "delta_pp": -3.8,
+          "fig": "figures/kpi_casen_pov_mdim_r09.png"
+        }
+      ]
+    },
+    {
+      "region_code": 10,
+      "region_name": "Los Lagos",
+      "kpis": [
+        {
+          "indicator_id": "casen_attend",
+          "indicator_label": "Asistencia a establecimiento (6–17)",
+          "source": "CASEN 2024",
+          "universe": "6–17",
+          "higher_is_worse": false,
+          "chile": 98.6,
+          "region": 99,
+          "delta_pp": 0.4,
+          "fig": "figures/kpi_casen_attend_r10.png"
+        },
+        {
+          "indicator_id": "casen_noatt",
+          "indicator_label": "No asiste a establecimiento (6–17)",
+          "source": "CASEN 2024",
+          "universe": "6–17",
+          "higher_is_worse": true,
+          "chile": 1.4,
+          "region": 1,
+          "delta_pp": -0.4,
+          "fig": "figures/kpi_casen_noatt_r10.png"
+        },
+        {
+          "indicator_id": "casen_pov_inc",
+          "indicator_label": "Pobreza por ingresos (0–17)",
+          "source": "CASEN 2024",
+          "universe": "0–17",
+          "higher_is_worse": true,
+          "chile": 24.9,
+          "region": 22.6,
+          "delta_pp": -2.3,
+          "fig": "figures/kpi_casen_pov_inc_r10.png"
+        },
+        {
+          "indicator_id": "casen_pov_mdim",
+          "indicator_label": "Pobreza multidimensional (0–17)",
+          "source": "CASEN 2024",
+          "universe": "0–17",
+          "higher_is_worse": true,
+          "chile": 22.5,
+          "region": 19.4,
+          "delta_pp": -3.1,
+          "fig": "figures/kpi_casen_pov_mdim_r10.png"
+        }
+      ]
+    },
+    {
+      "region_code": 11,
+      "region_name": "Aysén",
+      "kpis": [
+        {
+          "indicator_id": "casen_attend",
+          "indicator_label": "Asistencia a establecimiento (6–17)",
+          "source": "CASEN 2024",
+          "universe": "6–17",
+          "higher_is_worse": false,
+          "chile": 98.6,
+          "region": 99.7,
+          "delta_pp": 1.1,
+          "fig": "figures/kpi_casen_attend_r11.png"
+        },
+        {
+          "indicator_id": "casen_noatt",
+          "indicator_label": "No asiste a establecimiento (6–17)",
+          "source": "CASEN 2024",
+          "universe": "6–17",
+          "higher_is_worse": true,
+          "chile": 1.4,
+          "region": 0.3,
+          "delta_pp": -1.1,
+          "fig": "figures/kpi_casen_noatt_r11.png"
+        },
+        {
+          "indicator_id": "casen_pov_inc",
+          "indicator_label": "Pobreza por ingresos (0–17)",
+          "source": "CASEN 2024",
+          "universe": "0–17",
+          "higher_is_worse": true,
+          "chile": 24.9,
+          "region": 21.3,
+          "delta_pp": -3.5,
+          "fig": "figures/kpi_casen_pov_inc_r11.png"
+        },
+        {
+          "indicator_id": "casen_pov_mdim",
+          "indicator_label": "Pobreza multidimensional (0–17)",
+          "source": "CASEN 2024",
+          "universe": "0–17",
+          "higher_is_worse": true,
+          "chile": 22.5,
+          "region": 16.3,
+          "delta_pp": -6.2,
+          "fig": "figures/kpi_casen_pov_mdim_r11.png"
+        }
+      ]
+    },
+    {
+      "region_code": 12,
+      "region_name": "Magallanes",
+      "kpis": [
+        {
+          "indicator_id": "casen_attend",
+          "indicator_label": "Asistencia a establecimiento (6–17)",
+          "source": "CASEN 2024",
+          "universe": "6–17",
+          "higher_is_worse": false,
+          "chile": 98.6,
+          "region": 99.1,
+          "delta_pp": 0.6,
+          "fig": "figures/kpi_casen_attend_r12.png"
+        },
+        {
+          "indicator_id": "casen_noatt",
+          "indicator_label": "No asiste a establecimiento (6–17)",
+          "source": "CASEN 2024",
+          "universe": "6–17",
+          "higher_is_worse": true,
+          "chile": 1.4,
+          "region": 0.9,
+          "delta_pp": -0.6,
+          "fig": "figures/kpi_casen_noatt_r12.png"
+        },
+        {
+          "indicator_id": "casen_pov_inc",
+          "indicator_label": "Pobreza por ingresos (0–17)",
+          "source": "CASEN 2024",
+          "universe": "0–17",
+          "higher_is_worse": true,
+          "chile": 24.9,
+          "region": 13.7,
+          "delta_pp": -11.1,
+          "fig": "figures/kpi_casen_pov_inc_r12.png"
+        },
+        {
+          "indicator_id": "casen_pov_mdim",
+          "indicator_label": "Pobreza multidimensional (0–17)",
+          "source": "CASEN 2024",
+          "universe": "0–17",
+          "higher_is_worse": true,
+          "chile": 22.5,
+          "region": 8.9,
+          "delta_pp": -13.6,
+          "fig": "figures/kpi_casen_pov_mdim_r12.png"
+        }
+      ]
+    },
+    {
+      "region_code": 13,
+      "region_name": "Metropolitana",
+      "kpis": [
+        {
+          "indicator_id": "casen_attend",
+          "indicator_label": "Asistencia a establecimiento (6–17)",
+          "source": "CASEN 2024",
+          "universe": "6–17",
+          "higher_is_worse": false,
+          "chile": 98.6,
+          "region": 98.2,
+          "delta_pp": -0.4,
+          "fig": "figures/kpi_casen_attend_r13.png"
+        },
+        {
+          "indicator_id": "casen_noatt",
+          "indicator_label": "No asiste a establecimiento (6–17)",
+          "source": "CASEN 2024",
+          "universe": "6–17",
+          "higher_is_worse": true,
+          "chile": 1.4,
+          "region": 1.8,
+          "delta_pp": 0.4,
+          "fig": "figures/kpi_casen_noatt_r13.png"
+        },
+        {
+          "indicator_id": "casen_pov_inc",
+          "indicator_label": "Pobreza por ingresos (0–17)",
+          "source": "CASEN 2024",
+          "universe": "0–17",
+          "higher_is_worse": true,
+          "chile": 24.9,
+          "region": 20.1,
+          "delta_pp": -4.8,
+          "fig": "figures/kpi_casen_pov_inc_r13.png"
+        },
+        {
+          "indicator_id": "casen_pov_mdim",
+          "indicator_label": "Pobreza multidimensional (0–17)",
+          "source": "CASEN 2024",
+          "universe": "0–17",
+          "higher_is_worse": true,
+          "chile": 22.5,
+          "region": 25.2,
+          "delta_pp": 2.7,
+          "fig": "figures/kpi_casen_pov_mdim_r13.png"
+        }
+      ]
+    },
+    {
+      "region_code": 14,
+      "region_name": "Los Ríos",
+      "kpis": [
+        {
+          "indicator_id": "casen_attend",
+          "indicator_label": "Asistencia a establecimiento (6–17)",
+          "source": "CASEN 2024",
+          "universe": "6–17",
+          "higher_is_worse": false,
+          "chile": 98.6,
+          "region": 99.3,
+          "delta_pp": 0.7,
+          "fig": "figures/kpi_casen_attend_r14.png"
+        },
+        {
+          "indicator_id": "casen_noatt",
+          "indicator_label": "No asiste a establecimiento (6–17)",
+          "source": "CASEN 2024",
+          "universe": "6–17",
+          "higher_is_worse": true,
+          "chile": 1.4,
+          "region": 0.7,
+          "delta_pp": -0.7,
+          "fig": "figures/kpi_casen_noatt_r14.png"
+        },
+        {
+          "indicator_id": "casen_pov_inc",
+          "indicator_label": "Pobreza por ingresos (0–17)",
+          "source": "CASEN 2024",
+          "universe": "0–17",
+          "higher_is_worse": true,
+          "chile": 24.9,
+          "region": 30.4,
+          "delta_pp": 5.6,
+          "fig": "figures/kpi_casen_pov_inc_r14.png"
+        },
+        {
+          "indicator_id": "casen_pov_mdim",
+          "indicator_label": "Pobreza multidimensional (0–17)",
+          "source": "CASEN 2024",
+          "universe": "0–17",
+          "higher_is_worse": true,
+          "chile": 22.5,
+          "region": 17.2,
+          "delta_pp": -5.3,
+          "fig": "figures/kpi_casen_pov_mdim_r14.png"
+        }
+      ]
+    },
+    {
+      "region_code": 15,
+      "region_name": "Arica y Parinacota",
+      "kpis": [
+        {
+          "indicator_id": "casen_attend",
+          "indicator_label": "Asistencia a establecimiento (6–17)",
+          "source": "CASEN 2024",
+          "universe": "6–17",
+          "higher_is_worse": false,
+          "chile": 98.6,
+          "region": 98.9,
+          "delta_pp": 0.4,
+          "fig": "figures/kpi_casen_attend_r15.png"
+        },
+        {
+          "indicator_id": "casen_noatt",
+          "indicator_label": "No asiste a establecimiento (6–17)",
+          "source": "CASEN 2024",
+          "universe": "6–17",
+          "higher_is_worse": true,
+          "chile": 1.4,
+          "region": 1.1,
+          "delta_pp": -0.4,
+          "fig": "figures/kpi_casen_noatt_r15.png"
+        },
+        {
+          "indicator_id": "casen_pov_inc",
+          "indicator_label": "Pobreza por ingresos (0–17)",
+          "source": "CASEN 2024",
+          "universe": "0–17",
+          "higher_is_worse": true,
+          "chile": 24.9,
+          "region": 30.7,
+          "delta_pp": 5.8,
+          "fig": "figures/kpi_casen_pov_inc_r15.png"
+        },
+        {
+          "indicator_id": "casen_pov_mdim",
+          "indicator_label": "Pobreza multidimensional (0–17)",
+          "source": "CASEN 2024",
+          "universe": "0–17",
+          "higher_is_worse": true,
+          "chile": 22.5,
+          "region": 23.3,
+          "delta_pp": 0.8,
+          "fig": "figures/kpi_casen_pov_mdim_r15.png"
+        }
+      ]
+    },
+    {
+      "region_code": 16,
+      "region_name": "Ñuble",
+      "kpis": [
+        {
+          "indicator_id": "casen_attend",
+          "indicator_label": "Asistencia a establecimiento (6–17)",
+          "source": "CASEN 2024",
+          "universe": "6–17",
+          "higher_is_worse": false,
+          "chile": 98.6,
+          "region": 99.1,
+          "delta_pp": 0.5,
+          "fig": "figures/kpi_casen_attend_r16.png"
+        },
+        {
+          "indicator_id": "casen_noatt",
+          "indicator_label": "No asiste a establecimiento (6–17)",
+          "source": "CASEN 2024",
+          "universe": "6–17",
+          "higher_is_worse": true,
+          "chile": 1.4,
+          "region": 0.9,
+          "delta_pp": -0.5,
+          "fig": "figures/kpi_casen_noatt_r16.png"
+        },
+        {
+          "indicator_id": "casen_pov_inc",
+          "indicator_label": "Pobreza por ingresos (0–17)",
+          "source": "CASEN 2024",
+          "universe": "0–17",
+          "higher_is_worse": true,
+          "chile": 24.9,
+          "region": 30.1,
+          "delta_pp": 5.3,
+          "fig": "figures/kpi_casen_pov_inc_r16.png"
+        },
+        {
+          "indicator_id": "casen_pov_mdim",
+          "indicator_label": "Pobreza multidimensional (0–17)",
+          "source": "CASEN 2024",
+          "universe": "0–17",
+          "higher_is_worse": true,
+          "chile": 22.5,
+          "region": 20.8,
+          "delta_pp": -1.7,
+          "fig": "figures/kpi_casen_pov_mdim_r16.png"
+        }
+      ]
+    }
+  ]
+}

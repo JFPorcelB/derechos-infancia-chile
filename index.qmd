@@ -25,8 +25,6 @@ format:
       <div class="icon-card"><div class="icon-skeleton"></div></div>
       <div class="icon-card"><div class="icon-skeleton"></div></div>
       <div class="icon-card"><div class="icon-skeleton"></div></div>
-      <div class="icon-card"><div class="icon-skeleton"></div></div>
-      <div class="icon-card"><div class="icon-skeleton"></div></div>
     </div>
 
     <div class="author-block">
@@ -38,6 +36,7 @@ format:
     </div>
   </div>
 </div>
-```
+<script src="app.js"></script>
 
+```
 
